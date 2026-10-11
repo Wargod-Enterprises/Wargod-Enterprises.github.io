@@ -39,6 +39,35 @@
     font-size: 1.2rem;
   }
   .games a:hover { background: #eee; color: #111; }
+  .quit {
+    margin-top: 32px;
+    padding: 10px 32px;
+    background: none;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: #aaa;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .quit:hover { border-color: #eee; color: #eee; }
+  /* "Thanks for playing" screen shown when quitting */
+  #thanks {
+    position: fixed;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #111;
+    text-align: center;
+    padding: 16px;
+  }
+  #thanks.show { display: flex; }
+  #thanks h1 { margin: 0; }
+  #thanks p { margin: 0; }
+  #closeNote { visibility: hidden; }
 </style>
 </head>
 <body>
@@ -48,9 +77,29 @@
   <div class="games">
     <!-- To add a game, copy one line below and change the link and name. -->
     <a href="https://wargod-enterprises.github.io/Hacker-Game/">Operator</a>
-    <a href="https://wargod-enterprises.github.io/RPG/">Click Game</a>
+    <a href="https://wargod-enterprises.github.io/RPG/">RPG</a>
     <a href="https://wargod-enterprises.github.io/Action-Game/">Action Game</a>
     <a href="https://wargod-enterprises.github.io/Agent-Game/">Agent Game</a>
   </div>
+  <button class="quit" id="quit">Quit</button>
+
+  <div id="thanks" role="dialog" aria-live="polite">
+    <h1>Thanks for playing</h1>
+    <p>Wargod Studios</p>
+    <p id="closeNote">You can close this tab now.</p>
+  </div>
+
+  <script>
+    // Quit: show "Thanks for playing", then try to close the tab. Browsers only let
+    // a page close itself in some cases (e.g. an installed app), so if the tab is
+    // still open a moment later, tell the player they can close it.
+    document.getElementById('quit').addEventListener('click', () => {
+      document.getElementById('thanks').classList.add('show');
+      setTimeout(() => {
+        window.close();
+        setTimeout(() => { document.getElementById('closeNote').style.visibility = 'visible'; }, 300);
+      }, 1500);
+    });
+  </script>
 </body>
 </html>
