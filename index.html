@@ -51,6 +51,7 @@
     cursor: pointer;
   }
   .quit:hover { border-color: #eee; color: #eee; }
+  .notes { margin-top: 24px; color: #aaa; font-size: 0.9rem; text-align: center; line-height: 1.6; }
   /* "Thanks for playing" screen shown when quitting */
   #thanks {
     position: fixed;
@@ -76,12 +77,16 @@
   <p>Pick a game</p>
   <div class="games">
     <!-- To add a game, copy one line below and change the link and name. -->
-    <a href="https://wargod-enterprises.github.io/Hacker-Game/">Operator</a>
-    <a href="https://wargod-enterprises.github.io/RPG/">RPG</a>
-    <a href="https://wargod-enterprises.github.io/Action-Game/">Action Game</a>
-    <a href="https://wargod-enterprises.github.io/Agent-Game/">Agent Game</a>
+    <a href="https://wargod-enterprises.github.io/Hacker-Game/">Operator*</a>
+    <a href="https://wargod-enterprises.github.io/RPG/">RPG**</a>
+    <a href="https://wargod-enterprises.github.io/Action-Game/">Action Game (working title)*</a>
+    <a href="https://wargod-enterprises.github.io/Agent-Game/">Agent Game (working title)*</a>
   </div>
   <button class="quit" id="quit">Quit</button>
+  <div class="notes">
+    <div>* in progress</div>
+    <div>** level 1 complete</div>
+  </div>
 
   <div id="thanks" role="dialog" aria-live="polite">
     <h1>Thanks for playing</h1>
